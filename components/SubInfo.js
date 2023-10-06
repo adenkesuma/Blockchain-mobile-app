@@ -1,18 +1,49 @@
 import { View, Text, Image } from 'react-native'
 import { SIZES, FONTS, COLORS, SHADOWS, assets } from '../constants'
 
-export const NFTTitle = () => {
+export const NFTTitle = ({ title, subTitle, titleSize, subTitleSize }) => {
   return (
     <View>
-      <Text>NFT Title</Text>
+        <Text style={{
+            fontFamily: FONTS.semiBold,
+            fontSize: titleSize,
+            color: COLORS.primary
+        }}>
+            {title}
+        </Text>
+        <Text style={{
+            fontFamily: FONTS.regular,
+            fontSize: subTitleSize,
+            color: COLORS.primary
+        }}>
+            {subTitle}
+        </Text>
     </View>
   )
 }
 
-export const EthPrice = () => {
+export const EthPrice = ({ price }) => {
   return (
-    <View>
-      <Text>Eth Price</Text>
+    <View
+        style={{
+            flexDirection: 'row',
+            alignItems: 'center'
+        }}
+    >
+        <Image 
+            source={assets.eth}
+            resizeMode='contain'
+            style={{ width: 26, height: 26, marginRight: 4 }}
+        />
+        <Text
+            style={{
+                fontFamily: FONTS.medium,
+                fontSize: SIZES.large,
+                color: COLORS.primary
+            }}
+        >
+            {price}
+        </Text>
     </View>
   )
 }
@@ -33,7 +64,7 @@ export const ImageCmp = ({ imgUrl, index }) => {
 
 export const People = () => {
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{ flexDirection: 'row', marginLeft: SIZES.font }}>
         {[assets.person02, assets.person03, assets.person04].map((imgUrl, index) => (
             <ImageCmp 
                 imgUrl={imgUrl}
@@ -51,6 +82,7 @@ export const EndDate = () => {
             paddingHorizontal: SIZES.font,
             paddingVertical: SIZES.font,
             backgroundColor: COLORS.white,
+            borderRadius: SIZES.small,
             justifyContent: 'center',
             alignItems: 'center',
             ...SHADOWS.light,
